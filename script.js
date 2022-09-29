@@ -1,4 +1,29 @@
-operate();
+let display = document.getElementsByClassName("display");
+
+let buttons = document.getElementsByClassName("numButton")
+
+let clearBtn = document.getElementsByClassName("clearButton")
+
+let displayValue = '';
+enterNum();
+
+
+function enterNum(){
+for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(e) {
+        displayValue += e.target.innerHTML;
+        display[0].innerHTML = displayValue;
+    });
+    }
+}
+
+clearBtn[0].addEventListener("click", function(e) {
+    displayValue =  '';
+    display[0].innerHTML = displayValue;
+});
+
+
+
 
 function add(a, b) {
     result = Number(a) + Number(b);
@@ -39,3 +64,4 @@ function operate(){
     }
     console.log(result);
 }
+

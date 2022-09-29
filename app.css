@@ -20,16 +20,20 @@ body {
     flex-direction: column;
 }
 
-.display {
+.displayCont {
     width: 445px;
     height: 20%;
     margin-top: 25px;
     background-color: #E7ECEF;
     border-radius: 15px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-end;
     border: 2px solid #274C77;
+}
+
+.display {
+    padding: 10px;
 }
 
 .clear {
