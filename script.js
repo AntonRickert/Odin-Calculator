@@ -1,6 +1,7 @@
 let display = document.getElementsByClassName("display");
-let buttons = document.getElementsByClassName("numButton")
-let clearBtn = document.getElementsByClassName("clearButton")
+let buttons = document.getElementsByClassName("numButton");
+let clearBtn = document.getElementsByClassName("clearButton");
+let delButton = document.getElementsByClassName("delButton");
 let displayValue = '';
 let dispArray = [];
 let number2;
@@ -15,8 +16,12 @@ function clearDisp(){
     display[0].innerHTML = displayValue;
 }
 
+delButton[0].addEventListener("click", function(){ 
+    displayValue = displayValue.slice(0, displayValue.length -1);
+    display[0].innerHTML = displayValue;
+});
 
-clearBtn[0].addEventListener("click", function(e) {
+clearBtn[0].addEventListener("click", function() {
     clearDisp();
 });
 
@@ -29,18 +34,27 @@ function getNum2() {
 }
 
 function checkForEquals(){
-    for (let i = 0; i <= dispArray.length; i++) {
-        if (dispArray[i] === "=") {
-            dispArray.pop();
-            let dispString = dispArray.join("");
-            let numbers = dispString.replace(/[,\/#!$%\^&\*x+;:{}=\-_`~()"' ]/g,',')
-            let numArray = numbers.split(",");
-            intNum2 = Number(numArray[1]);
-            console.log(intNum1, operator, intNum2);
-            clearDisp();
-            callOperation(intNum1, operator, intNum2);
-        }
+    if (dispArray[0] === undefined) {
+        console.log('success');
     }
+    else {
+       for (let i = 0; i <= dispArray.length; i++) {
+            if (dispArray[i] === "=") {
+                printResult();
+            }
+        } 
+    }
+    
+}
+
+function printResult(){
+    dispArray.pop();
+    let dispString = dispArray.join("");
+    let numbers = dispString.replace(/[,\/#!$%\^&\*x+;:{}=\-_`~()"' ]/g,',')
+    numbers = numbers.split(",");
+    intNum2 = Number(numbers[1]);
+    clearDisp();
+    callOperation(intNum1, operator, intNum2);
 }
 
 function getNum1() {
@@ -48,7 +62,6 @@ function getNum1() {
         if (dispArray[i] === "-" || dispArray[i] === "+" || dispArray[i] === "x" || dispArray[i] === "/") {
             let number1 = dispArray.slice(0, i)
             intNum1 = Number(number1.join(''))
-            console.log(intNum1);
         }
     }
 }

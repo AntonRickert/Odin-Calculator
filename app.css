@@ -12,7 +12,7 @@ body {
 .calc-body {
     width: 500px;
     height: 700px;
-    background-color: #8B8C89;
+    background-color: #457B9D;
     border-radius: 30px;
     display: flex;
     justify-content: space-between;
@@ -20,25 +20,41 @@ body {
     flex-direction: column;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
 .displayCont {
     width: 445px;
     height: 20%;
     margin-top: 25px;
-    background-color: #E7ECEF;
+    background-color: #F1FAEE;
     border-radius: 15px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     border: 2px solid #274C77;
+    flex-wrap: wrap;
 }
 
 .display {
     padding: 10px;
-    font-size: 40px
+    font-size: 40px;
+    max-width: 400px;
+    word-break: break-all;
+    text-align: right;
 }
 
 .clear {
-    width: 445px;
+    width: 222.5px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delete {
+    width: 222.5px;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -67,17 +83,26 @@ body {
 .numButton {
     height: 100%;
     width: 100%;
-    background-color: #A3CEF1;
-    border: 2px solid #274C77;
+    background-color: #A8DADC;
+    border: 2px solid #1D3557;
     border-radius: 10px;
     font-size: 20px;
 }
 
-.clearButton {
-    width: 100%;
+.delButton {
+    width: 99%;
     height: 100%;
-    background-color: #A3CEF1;
-    border: 2px solid #274C77;
+    background-color: #E63946;
+    border: 2px solid #1D3557;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+.clearButton {
+    width: 99%;
+    height: 100%;
+    background-color: #A8DADC;
+    border: 2px solid #1D3557;
     border-radius: 15px;
     font-size: 20px;
 }
