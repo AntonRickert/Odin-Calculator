@@ -11,10 +11,8 @@ let operator;
 let checkArray = [];
 let operatorExceptions = /[,\/#!$%\^&\*x+;*:{}=\-_`~()"' ]/g;
 let secondOperator;
-
 display[0].innerHTML = 0;
 enterNum();
-
 
 delButton[0].addEventListener("click", function(){ 
     displayValue = displayValue.slice(0, displayValue.length -1);
@@ -32,13 +30,6 @@ function clearDisp(){
     display[0].innerHTML = 0;
 }
 
-
-function getNum2() {
-
-}
-
-
-
 function printResult(operatorCount){
     dispArray.pop();
     let dispString = dispArray.join("");
@@ -49,15 +40,6 @@ function printResult(operatorCount){
     clearDisp();
     operate(intNum1, operator, intNum2, operatorCount);
 }
-
-// function getNum1() {
-//     for (let i = 0; i <= dispArray[0]; i++) {
-//         if (dispArray[i] === "-" || dispArray[i] === "+" || dispArray[i] === "x" || dispArray[i] === "/") {
-//             let number1 = dispArray.slice(0, i)
-//             intNum1 = Number(number1.join(''))
-//         }
-//     }
-// }
 
 function checkForEquals(){
     for (let i = 0; i <= dispArray.length; i++) {
@@ -82,7 +64,6 @@ function checkForSecondOperator() {
 
 function checkNGetOperator() {
     checkForSecondOperator();
-    
     for (let i = 0; i <= dispArray.length - 1; i++) {
         
         if (dispArray[i] === "-"){
@@ -135,11 +116,9 @@ function operate(num1, operator, num2, operatorCount){
     }
     else {
         displayValue = result;   
-    }
-    
-    
-    
+    } 
 }
+
 function add(a, b) {
     result = Number(a) + Number(b);
     return result;
