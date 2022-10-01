@@ -12,7 +12,9 @@ let operator;
 let checkArray = [];
 let operatorExceptions = /[,\/#!$%\^&\*x+;*:{}=\-_`~()"' ]/g;
 let secondOperator;
+//sets display to 0 on load
 display[0].innerHTML = 0;
+//calls main function
 enterNum();
 
 
