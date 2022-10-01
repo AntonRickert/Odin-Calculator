@@ -7,6 +7,7 @@ body {
     padding: 0;
     background-color: #274C77;
     font-family: Helvetica, sans-serif;
+    color: black;
 }
 
 .calc-body {
@@ -87,6 +88,7 @@ body {
     border: 2px solid #1D3557;
     border-radius: 10px;
     font-size: 20px;
+    color: black;
 }
 
 .delButton {
@@ -96,6 +98,7 @@ body {
     border: 2px solid #1D3557;
     border-radius: 10px;
     font-size: 20px;
+    color: black;
 }
 
 .clearButton {
@@ -105,4 +108,5 @@ body {
     border: 2px solid #1D3557;
     border-radius: 10px;
     font-size: 20px;
+    color: black;
 }

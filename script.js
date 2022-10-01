@@ -39,7 +39,7 @@ function printResult(operatorCount){
     intNum2 = Number(numbers[1]);
     clearDisp();
     if (operator === '/' && intNum2 === 0) {
-        displayValue = "You can't do that ;)";
+        alert("You can't divide by Zero! ;)");
     }
     else {
        operate(intNum1, operator, intNum2, operatorCount); 
