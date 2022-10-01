@@ -9,6 +9,9 @@ let intNum1;
 let intNum2;
 let operator;
 let checkArray = [];
+let operatorExceptions = /[,\/#!$%\^&\*x+;:{}=\-_`~()"' ]/g;
+let secondOperator;
+
 display[0].innerHTML = 0;
 enterNum();
 
@@ -24,57 +27,65 @@ clearBtn[0].addEventListener("click", function() {
 
 
 function clearDisp(){
+    dispArray = [];
     displayValue =  '';
     display[0].innerHTML = 0;
 }
 
-function callOperation(num1, operator, num2) {
-    operate(num1, operator, num2);
-}
 
 function getNum2() {
 
 }
 
-function checkForEquals(){
-    if (displayValue === '') {
-        console.log('success');
-    }
-    else {
-       for (let i = 0; i <= dispArray.length; i++) {
-            if (dispArray[i] === "=") {
-                printResult();
-            }
-        } 
-    }
-    
-}
 
-function printResult(){
+
+function printResult(operatorCount){
     dispArray.pop();
     let dispString = dispArray.join("");
-    let numbers = dispString.replace(/[,\/#!$%\^&\*x+;:{}=\-_`~()"' ]/g,',')
+    let numbers = dispString.replace(operatorExceptions,',')
     numbers = numbers.split(",");
+    intNum1 = Number(numbers[0]);
     intNum2 = Number(numbers[1]);
     clearDisp();
-    callOperation(intNum1, operator, intNum2);
+    operate(intNum1, operator, intNum2, operatorCount);
 }
 
-function getNum1() {
+// function getNum1() {
+//     for (let i = 0; i <= dispArray[0]; i++) {
+//         if (dispArray[i] === "-" || dispArray[i] === "+" || dispArray[i] === "x" || dispArray[i] === "/") {
+//             let number1 = dispArray.slice(0, i)
+//             intNum1 = Number(number1.join(''))
+//         }
+//     }
+// }
+
+function checkForEquals(){
     for (let i = 0; i <= dispArray.length; i++) {
-        if (dispArray[i] === "-" || dispArray[i] === "+" || dispArray[i] === "x" || dispArray[i] === "/") {
-            let number1 = dispArray.slice(0, i)
-            intNum1 = Number(number1.join(''))
+        if (dispArray[i] === "=") {
+            printResult();
+        }
+    }   
+}
+
+function checkForSecondOperator() {
+    let operatorCount = 0;
+    for (i = 0; i < dispArray.length; i++) {
+        if (dispArray[i] === "-" || dispArray[i] === "+" || dispArray[i] === "x" || dispArray[i] === "/") { 
+            operatorCount++;
+        }
+        if (operatorCount === 2) {
+            secondOperator = dispArray[i];
+            console.log(secondOperator);
+            printResult(operatorCount);
         }
     }
+    
 }
 
 function checkNGetOperator() {
-    if (dispArray[0] !== "-" && dispArray[0] !== "+" && dispArray[0] !== "x" && dispArray[0] !== "/") {
-        getNum1();
-    }
+    checkForSecondOperator();
     
-    for (let i = 0; i <= dispArray.length; i++) {
+    for (let i = 0; i <= dispArray.length - 1; i++) {
         
         if (dispArray[i] === "-"){
             operator = "-"; 
@@ -98,13 +109,15 @@ for (let i = 0; i < buttons.length; i++) {
             displayValue += e.target.innerHTML;
             dispArray = displayValue.split("");
             checkNGetOperator(); 
+            //checkForSecondOperator();
             checkForEquals();
+            
             display[0].innerHTML = displayValue;
         });
     }
 }
 
-function operate(num1, operator, num2){
+function operate(num1, operator, num2, operatorCount){
     let result;
     if (operator === "+") {
         result = add(num1, num2);
@@ -118,7 +131,15 @@ function operate(num1, operator, num2){
     if (operator === "/") {
         result = divide(num1, num2);
     }
-    displayValue = result;
+    if (operatorCount === 2) {
+        displayValue = result + secondOperator;
+    }
+    else {
+        displayValue = result;   
+    }
+    
+    
+    
 }
 function add(a, b) {
     result = Number(a) + Number(b);
