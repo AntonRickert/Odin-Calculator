@@ -9,12 +9,9 @@ let intNum1;
 let intNum2;
 let operator;
 let checkArray = [];
+display[0].innerHTML = 0;
 enterNum();
 
-function clearDisp(){
-    displayValue =  '';
-    display[0].innerHTML = displayValue;
-}
 
 delButton[0].addEventListener("click", function(){ 
     displayValue = displayValue.slice(0, displayValue.length -1);
@@ -25,6 +22,12 @@ clearBtn[0].addEventListener("click", function() {
     clearDisp();
 });
 
+
+function clearDisp(){
+    displayValue =  '';
+    display[0].innerHTML = 0;
+}
+
 function callOperation(num1, operator, num2) {
     operate(num1, operator, num2);
 }
@@ -34,7 +37,7 @@ function getNum2() {
 }
 
 function checkForEquals(){
-    if (dispArray[0] === undefined) {
+    if (displayValue === '') {
         console.log('success');
     }
     else {
@@ -66,7 +69,6 @@ function getNum1() {
     }
 }
 
-
 function checkNGetOperator() {
     if (dispArray[0] !== "-" && dispArray[0] !== "+" && dispArray[0] !== "x" && dispArray[0] !== "/") {
         getNum1();
@@ -90,10 +92,9 @@ function checkNGetOperator() {
     }
 }
 
-
 function enterNum(){
-for (let i = 0; i < buttons.length; i++) {   
-        buttons[i].addEventListener("click", function(e) {
+for (let i = 0; i < buttons.length; i++) { 
+        buttons[i].addEventListener("click", function(e) {  
             displayValue += e.target.innerHTML;
             dispArray = displayValue.split("");
             checkNGetOperator(); 
@@ -118,9 +119,7 @@ function operate(num1, operator, num2){
         result = divide(num1, num2);
     }
     displayValue = result;
-
 }
-
 function add(a, b) {
     result = Number(a) + Number(b);
     return result;
@@ -137,4 +136,3 @@ function divide(a, b) {
     result = Number(a) / Number(b);
     return result;
 }
-
