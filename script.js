@@ -38,7 +38,13 @@ function printResult(operatorCount){
     intNum1 = Number(numbers[0]);
     intNum2 = Number(numbers[1]);
     clearDisp();
-    operate(intNum1, operator, intNum2, operatorCount);
+    if (operator === '/' && intNum2 === 0) {
+        displayValue = "You can't do that ;)";
+    }
+    else {
+       operate(intNum1, operator, intNum2, operatorCount); 
+    }
+    
 }
 
 function checkForEquals(){
