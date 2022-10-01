@@ -75,11 +75,9 @@ function checkForSecondOperator() {
         }
         if (operatorCount === 2) {
             secondOperator = dispArray[i];
-            console.log(secondOperator);
             printResult(operatorCount);
         }
     }
-    
 }
 
 function checkNGetOperator() {
@@ -98,8 +96,7 @@ function checkNGetOperator() {
         }
         else if (dispArray[i] === "/"){
             operator = "/";
-        }
-        
+        }    
     }
 }
 
@@ -107,11 +104,13 @@ function enterNum(){
 for (let i = 0; i < buttons.length; i++) { 
         buttons[i].addEventListener("click", function(e) {  
             displayValue += e.target.innerHTML;
+            if (displayValue[0] === "-" || displayValue[0] === "+" || displayValue[0] === "*" || displayValue[0] === '/') {
+                displayValue = displayValue.slice(0)
+                console.log(displayValue);
+            }
             dispArray = displayValue.split("");
             checkNGetOperator(); 
-            //checkForSecondOperator();
             checkForEquals();
-            
             display[0].innerHTML = displayValue;
         });
     }
