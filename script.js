@@ -9,7 +9,7 @@ let intNum1;
 let intNum2;
 let operator;
 let checkArray = [];
-let operatorExceptions = /[,\/#!$%\^&\*x+;:{}=\-_`~()"' ]/g;
+let operatorExceptions = /[,\/#!$%\^&\*x+;*:{}=\-_`~()"' ]/g;
 let secondOperator;
 
 display[0].innerHTML = 0;
@@ -70,7 +70,7 @@ function checkForEquals(){
 function checkForSecondOperator() {
     let operatorCount = 0;
     for (i = 0; i < dispArray.length; i++) {
-        if (dispArray[i] === "-" || dispArray[i] === "+" || dispArray[i] === "x" || dispArray[i] === "/") { 
+        if (dispArray[i] === "-" || dispArray[i] === "+" || dispArray[i] === "*" || dispArray[i] === "/") { 
             operatorCount++;
         }
         if (operatorCount === 2) {
@@ -93,7 +93,7 @@ function checkNGetOperator() {
         else if (dispArray[i] === "+"){
             operator = "+";
         }
-        else if (dispArray[i] === "x"){
+        else if (dispArray[i] === "*"){
             operator = "*";
         }
         else if (dispArray[i] === "/"){
