@@ -50,7 +50,7 @@ function printResult(operatorCount){
     clearDisp();
     //checks for attempt of dividing by zero
     if (operator === '/' && intNum2 === 0) {
-        alert("You can't divide by Zero! ;)");
+        alert("You can't divide by Zero!");
     }
     //calls the operate funtion, parsing the important values to it
     else {
